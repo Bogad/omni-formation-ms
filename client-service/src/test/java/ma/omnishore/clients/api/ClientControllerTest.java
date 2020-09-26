@@ -31,7 +31,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.google.gson.Gson;
 
-import ma.omnishore.clients.api.ClientController;
+import ma.omnishore.clients.config.WithMockOAuth2Conext;
 import ma.omnishore.clients.domain.Client;
 import ma.omnishore.clients.service.impl.ClientService;
 
@@ -58,6 +58,7 @@ public class ClientControllerTest {
 	}
 
 	@Test
+	@WithMockOAuth2Conext(authorities = "user")
 	public void testGetClients() throws Exception {
 		Client client1 = new Client("Test1", "Test1", "test1@test.ma","Address 1");
 		Client client2 = new Client("Test2", "Test2", "test2@test.ma","Address 2");
