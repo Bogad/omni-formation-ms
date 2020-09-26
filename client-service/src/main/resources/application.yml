@@ -1,0 +1,13 @@
+server:
+  port: 9000
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/clients_db?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: admin
+    
