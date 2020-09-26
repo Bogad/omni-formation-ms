@@ -1,6 +1,8 @@
 server:
   port: 9000
 spring:
+  main:
+     allow-bean-definition-overriding: true
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: MYSQL
@@ -10,6 +12,15 @@ spring:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/clients_db?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: admin
+    
+keycloak:
+  realm: formation-ms
+  auth-server-url: http://localhost:8080/auth
+  resource: client-app
+  credentials:
+    secret: 78e26af4-7d64-43f7-9dd8-e6e37700a6aa
+  principal-attribute: preferred_username
+  bearer-only: true
 
 ---
 spring:
