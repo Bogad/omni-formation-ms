@@ -41,21 +41,21 @@ public class ClientController {
 
 	// -------------------Retrieve Single Client------------------------------------
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Client> getClient(@PathVariable("id") long id){
+	public ResponseEntity<Client> getClient(@PathVariable("id") long id) {
 		Client client = clientService.getClient(id);
 		return new ResponseEntity<>(client, HttpStatus.OK);
 	}
 
 	// -------------------Create a Client-------------------------------------------
 	@PostMapping
-	public ResponseEntity<Client> createClient(@RequestBody Client client){
+	public ResponseEntity<Client> createClient(@RequestBody Client client) {
 		client = clientService.createClient(client);
 		return new ResponseEntity<>(client, HttpStatus.CREATED);
 	}
 
 	// ------------------- Update a Client ------------------------------------------------
 	@PutMapping
-	public ResponseEntity<Client> updateClient(@RequestBody Client client){
+	public ResponseEntity<Client> updateClient(@RequestBody Client client) {
 		clientService.updateClient(client);
 		return new ResponseEntity<>(client, HttpStatus.OK);
 	}
