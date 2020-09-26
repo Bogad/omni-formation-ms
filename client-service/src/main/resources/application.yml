@@ -1,6 +1,8 @@
 server:
   port: 9000
 spring:
+  application:
+    name: client-service
   main:
      allow-bean-definition-overriding: true
   jpa:
@@ -22,6 +24,9 @@ keycloak:
   principal-attribute: preferred_username
   bearer-only: true
 
+swagger-ui:
+  client: swagger-ui
+  secret: 6c37705a-d860-480d-b6b2-74676a7129f8
 ---
 spring:
   profiles: test
