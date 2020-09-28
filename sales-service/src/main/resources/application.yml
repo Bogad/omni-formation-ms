@@ -1,6 +1,8 @@
 server:
   port: 9001
 spring:
+  application:
+    name: sales-service
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: MYSQL
@@ -11,6 +13,10 @@ spring:
     username: root
     password: admin
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
 ---
 spring:
   profiles: test
