@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import ma.omnishore.clients.dto.SaleDto;
 
-@FeignClient(name = "sales-service", url = "http://localhost:9001")
+@FeignClient(name = "sales-service")
 public interface SalesClient {
 
 	@GetMapping("/api/sales/client/{id}")
