@@ -31,11 +31,11 @@ keycloak:
   auth-server-url: http://localhost:8080/auth
   resource: client-app
   credentials:
-    secret: 78e26af4-7d64-43f7-9dd8-e6e37700a6aa
+    secret: b5f3ff40-ea57-4b08-bda8-e676ee5edb7a
   principal-attribute: preferred_username
   bearer-only: true
 
 swagger-ui:
   client: swagger-ui
-  secret: 5cd64901-ad75-4def-bcb5-1b8bf05d84bf
+  secret: 6c37705a-d860-480d-b6b2-74676a7129f8
   
