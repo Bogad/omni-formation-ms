@@ -19,4 +19,5 @@ zuul:
     sales:
       path: /manage-sales/**
       serviceId: sales-service
+  sensitiveHeaders:  Cookie, Set-Cookie
       
