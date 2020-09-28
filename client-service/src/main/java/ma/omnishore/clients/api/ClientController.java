@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ma.omnishore.clients.api.feign.SalesClient;
 import ma.omnishore.clients.domain.Client;
+import ma.omnishore.clients.dto.SaleDto;
 import ma.omnishore.clients.service.IClientService;
 
 /**
@@ -29,6 +31,9 @@ public class ClientController {
 
 	@Autowired
 	private IClientService clientService;
+
+	@Autowired
+	private SalesClient salesClient;
 
 	private static final Logger log = LoggerFactory.getLogger(ClientController.class);
 
@@ -67,5 +72,12 @@ public class ClientController {
 	public ResponseEntity<Client> deleteClient(@PathVariable("id") long id) {
 		clientService.deleteClient(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	// ------------------- Retrieve Client Sales -----------------------------------------
+	@GetMapping(value = "/{id}/sales")
+	public ResponseEntity<List<SaleDto>> getClientSales(@PathVariable("id") long id) {
+		List<SaleDto> sales = salesClient.getClientSales(id);
+		return new ResponseEntity<>(sales, HttpStatus.OK);
 	}
 }
