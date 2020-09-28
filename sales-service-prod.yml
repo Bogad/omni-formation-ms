@@ -1,0 +1,35 @@
+server:
+  port: 9311
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/sales_db?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: admin
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+---
+spring:
+  profiles: test
+  datasource:
+        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        username: sa
+        password: sa
+        driver-class-name: org.h2.Driver
+  jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate :
+          ddl-auto: create
+
+    
