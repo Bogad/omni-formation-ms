@@ -1,5 +1,6 @@
 package ma.omnishore.clients.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import ma.omnishore.clients.api.feign.SalesClient;
 import ma.omnishore.clients.domain.Client;
 import ma.omnishore.clients.dto.SaleDto;
@@ -75,9 +77,13 @@ public class ClientController {
 	}
 
 	// ------------------- Retrieve Client Sales -----------------------------------------
+	@CircuitBreaker( name = "sales-service", fallbackMethod = "salesFailed" )
 	@GetMapping(value = "/{id}/sales")
-	public ResponseEntity<List<SaleDto>> getClientSales(@PathVariable("id") long id) {
-		List<SaleDto> sales = salesClient.getClientSales(id);
-		return new ResponseEntity<>(sales, HttpStatus.OK);
+	public List<SaleDto> getClientSales(@PathVariable("id") long id) {
+		return salesClient.getClientSales(id);
+	}
+
+	public List<SaleDto> salesFailed( long id, Throwable throwable ) {
+		return new ArrayList<>();
 	}
 }

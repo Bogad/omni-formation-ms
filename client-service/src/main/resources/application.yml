@@ -19,6 +19,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/  
+
+feign:
+  hystrix:
+    enabled: false
         
 keycloak:
   realm: formation-ms
