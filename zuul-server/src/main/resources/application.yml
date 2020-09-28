@@ -1,0 +1,22 @@
+info:
+  component: Zuul Server
+
+server:
+  port: 8765
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  client: 
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  routes:
+    clients:
+      path: /manage-clients/**
+      serviceId: client-service
+    sales:
+      path: /manage-sales/**
+      serviceId: sales-service
+      
