@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: sales-service
+  zipkin: 
+    base-url: http://localhost:9411 
+  sleuth:
+    sampler:
+      probability: 1
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: MYSQL
