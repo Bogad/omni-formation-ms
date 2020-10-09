@@ -22,6 +22,18 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+keycloak:
+  realm: formation-ms
+  auth-server-url: http://localhost:8080/auth
+  resource: sales-app
+  credentials:
+    secret: b5f3ff40-ea57-4b08-bda8-e676ee5edb7a
+  principal-attribute: preferred_username
+  bearer-only: true
+
+swagger-ui:
+  client: swagger-ui
+  secret: 6c37705a-d860-480d-b6b2-74676a7129f8
 ---
 spring:
   profiles: test
